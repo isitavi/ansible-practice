@@ -1,0 +1,10 @@
+all:
+    hosts:
+        ansible-client1.isitavi.com
+    children:
+        ansible_lab:
+            hosts:
+                ansible-client2.isitavi.com
+        httpd_service:
+            hosts:
+                ansible-client1.isitavi.com
