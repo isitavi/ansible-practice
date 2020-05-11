@@ -1,0 +1,17 @@
+---
+- hosts: ansible_lab
+  become: yes
+  handlers:
+    - name: restart httpd service
+      service:
+        name: httpd
+        state: restarted
+      listen: "restart web services"
+  tasks:
+    - name: change configuration in /etc/httpd/conf/httpd.com
+      replace:
+        path: /etc/httpd/conf/httpd.conf 
+        regexp: '^DocumentRoot.*$'
+        replace: 'DocumentRoot "/var/www/html"'
+        backup: yes
+      notify: "restart web services"

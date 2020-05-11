@@ -1,0 +1,14 @@
+---
+- hosts: ansible_lab
+  tasks:
+    - name: create a file and stored results to a register
+      file:
+        path: /tmp/testfile
+        state: touch
+      register: output
+    - debug: msg="Register output is {{output}}"
+
+    - name: output write to a file
+      lineinfile:
+        path: /tmp/testfile
+        line: "{{output.uid}}"
