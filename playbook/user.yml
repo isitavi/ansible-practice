@@ -6,7 +6,7 @@
       user:
         name: "{{item}}"
 #usuing loops
-      with_items:
+      loop:
         - oracle
         - avi
 

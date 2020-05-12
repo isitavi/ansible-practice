@@ -1,0 +1,15 @@
+---
+- hosts: client1
+  become: yes
+  tasks:
+    - name: Download html file from /var/www/html
+      block:
+        - get_url:
+            url: "http://ansible-client1.isitavi.com/index.html"
+            dest: "/home/sys-admin/client01"
+      rescue:
+        - debug:
+            msg: 'I caught an error, can do stuff here to fix it, :-)'
+      always:
+        - debug:
+            msg: 'Play running Done'

@@ -1,0 +1,13 @@
+---
+- hosts: ansible_lab
+  tasks: 
+    - name: purge index.html file from all hosts
+      get_url: 
+        url: http://ansible-client1.isitavi.com/index.html
+        # validate_certs: no
+        dest: /tmp/test5.txt
+        # force: yes
+      # ignore_errors: yes
+      # loop:
+      #   - ansible-client1.isitavi.com
+      #   - ansible-client2.isitavi.com

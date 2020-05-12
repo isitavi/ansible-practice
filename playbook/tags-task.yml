@@ -1,0 +1,21 @@
+---
+- hosts: client1
+  become: yes
+  tasks:
+    - name: deploy test.html file into application server
+      copy:
+        src: /home/sys-admin/test.html
+        dest: /var/www/html/test.html
+      tags:
+        - application_server_deploy
+- hosts: client2
+  become: yes
+  tasks:
+    - name: deploy .sql file into db server
+      copy:
+        src: /home/sys-admin/test.sql
+        dest: /tmp/test.sql
+      tags:
+        - db_server_deploy
+
+            

@@ -1,0 +1,10 @@
+---
+- hosts: ansible_lab
+  become: yes
+  tasks:
+    - name: appand a line to index.html
+      lineinfile:
+        path: /var/www/html/index.html
+        line: "Add 2nd line"
+      when:
+        - ansible_host == "ansible-client1.isitavi.com"
