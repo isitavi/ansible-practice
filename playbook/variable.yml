@@ -1,0 +1,14 @@
+---
+- hosts: local
+  vars:
+    target_path: /home/sys-admin/host.txt
+  tasks:
+    - name: creating a file
+      file:
+        path: "{{target_path}}"
+        state: touch
+    - name: write to this file
+      lineinfile:
+        path: "{{target_path}}"
+        line: "{{ groups['ansible_lab']|join(' ') }}"
+

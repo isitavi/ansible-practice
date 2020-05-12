@@ -1,0 +1,28 @@
+---
+- hosts: client2
+  vars:
+    desired_path: /home/sys-admin/user-list
+  tasks:
+    - name: append all userlist to a newly created file
+      file:
+        path: "{{desired_path}}"
+        state: touch
+    - name: including a vars file
+      include_vars:
+        file: users.lst
+        name: userlist
+    #This is one way of include external variable file in ansible
+    # - name: append all user to desired file
+    #   lineinfile:
+    #     path: "{{desired_path}}"
+    #     line: "{{item}}"
+    #   with_items:
+    #     - "{{userlist['staff']}}"
+    #     - "{{userlist['faculty']}}"
+    #     - "{{userlist['others']}}"
+    #This is another way of include external variable file in ansible
+    #ansible-playbook user_with_variable.yum -e "@users.lst"
+      with_items:
+        - "{{staff}}"
+        - "{{faculty}}"
+        - "{{others}}"
