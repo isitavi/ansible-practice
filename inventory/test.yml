@@ -1,0 +1,8 @@
+---
+- hosts: test
+  tasks:
+    - name: this is for test
+      debug:
+        msg: "{{inventory_hostname}}"
+    - name: print host address
+        msg: "{{client1_host}}"

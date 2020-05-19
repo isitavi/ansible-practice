@@ -1,0 +1,6 @@
+---
+#define roles
+- hosts: client1
+  become: yes
+  roles: 
+    - php-install

@@ -1,0 +1,6 @@
+---
+- hosts: local
+  become: yes
+  tasks:
+    - name: install elasticsearch through ansible
+      command: ansible-galaxy install elastic.elasticsearch
